@@ -1,0 +1,37 @@
+name: unit
+
+
+on:
+
+    push:
+        branches:
+            - main
+            - develop
+    pull_request:
+        branches:
+            - main
+            - develop
+
+jobs:
+
+    config:
+        environment: develop
+        env:
+            URL: ${{ secrets.URL }}
+            REDIS_PORT: ${{ secrets.REDIS_PORT }}
+            REDIS_HOST: ${{ secrets.REDIS_HOST }}
+
+        runs-on: ubuntu-latest
+
+        steps:
+
+            - uses: actions/checkout@v4
+
+            - uses: actions/setup-python@v5
+              with:
+                python-version: "3.14"
+
+            - run: pip install python-dotenv
+
+            - run: python -m tests.unit.config
+            
