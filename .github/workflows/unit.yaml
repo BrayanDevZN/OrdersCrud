@@ -16,6 +16,10 @@ jobs:
 
     config:
         environment: develop
+        env:
+            URL: ${{ secrets.URL }}
+            REDIS_PORT: ${{ secrets.REDIS_PORT }}
+            REDIS_HOST: ${{ secrets.REDIS_HOST }}
 
         runs-on: ubuntu-latest
 
