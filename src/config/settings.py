@@ -24,15 +24,17 @@ class LoadEnvroin:
     #confere se o .env existe
     def _exists(self) -> None:
 
-        if not os.path.exists(self.BASE_DIR):
-
-            raise NotFoundEnvroinError("Exepted .env")
+        self.exists = os.path.exists(self.BASE_DIR)
 
     #Carrega as variaveis
     def _load(self) -> None:
 
         from dotenv import load_dotenv
-        load_dotenv(self.BASE_DIR)
+
+        if self.exists:
+            load_dotenv(self.BASE_DIR)
+        else:
+            load_dotenv()
 
     #le as variaveis
     def _read(self) -> None:
