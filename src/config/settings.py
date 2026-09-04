@@ -39,7 +39,7 @@ class LoadEnvroin:
     #le as variaveis
     def _read(self) -> None:
 
-        envroins = ["redis_port", "redis_host", "url"]
+        envroins = ["REDIS_HOST", "REDIS_PORT", "URL"]
     
         for name in envroins:
 
